@@ -1,103 +1,134 @@
-import Image from "next/image";
+'use client';
 
-export default function Home() {
+import Link from 'next/link';
+import { CalendarDaysIcon, CheckCircleIcon, TrophyIcon, ChartBarIcon } from '@heroicons/react/24/outline';
+import { MainLayout } from '@/components/layout';
+import { Button } from '@/components/ui';
+import { useAuth } from '@/contexts/AuthContext';
+
+function HeroSection() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <div className="min-h-screen bg-gradient-to-br from-primary/5 via-background to-secondary/5">
+      <div className="container mx-auto px-4 py-16">
+        <div className="text-center space-y-8 max-w-4xl mx-auto">
+          {/* Logo and Branding */}
+          <div className="flex items-center justify-center space-x-4 mb-8">
+            <div className="bg-primary text-primary-foreground flex h-16 w-16 items-center justify-center rounded-2xl">
+              <CalendarDaysIcon className="h-10 w-10" />
+            </div>
+            <h1 className="text-5xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+              HabitTracker
+            </h1>
+          </div>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+          {/* Hero Content */}
+          <div className="space-y-6">
+            <h2 className="text-4xl md:text-6xl font-bold tracking-tight">
+              Build Better Habits,
+              <br />
+              <span className="text-primary">One Day at a Time</span>
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+              Track your daily habits with our point-based system. Set goals, earn rewards, 
+              and watch your progress with beautiful analytics and insights.
+            </p>
+          </div>
+
+          {/* CTA Button */}
+          <div className="pt-8">
+            <Button asChild size="lg" className="text-lg px-8 py-6 h-auto">
+              <Link href="/login">
+                Get Started Free
+              </Link>
+            </Button>
+            <p className="text-sm text-muted-foreground mt-4">
+              Start tracking your habits today • No credit card required
+            </p>
+          </div>
+
+          {/* Features Grid */}
+          <div className="grid md:grid-cols-3 gap-8 pt-16 max-w-3xl mx-auto">
+            <div className="text-center space-y-4">
+              <div className="bg-success/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto">
+                <CheckCircleIcon className="h-8 w-8 text-success" />
+              </div>
+              <h3 className="text-xl font-semibold">Daily Tracking</h3>
+              <p className="text-muted-foreground">
+                Mark habits complete and earn points for building consistency
+              </p>
+            </div>
+            <div className="text-center space-y-4">
+              <div className="bg-warning/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto">
+                <TrophyIcon className="h-8 w-8 text-warning" />
+              </div>
+              <h3 className="text-xl font-semibold">Point System</h3>
+              <p className="text-muted-foreground">
+                Gamify your habits with positive and negative scoring
+              </p>
+            </div>
+            <div className="text-center space-y-4">
+              <div className="bg-primary/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto">
+                <ChartBarIcon className="h-8 w-8 text-primary" />
+              </div>
+              <h3 className="text-xl font-semibold">Analytics</h3>
+              <p className="text-muted-foreground">
+                Visualize your progress with charts and historical data
+              </p>
+            </div>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </div>
     </div>
   );
+}
+
+function Dashboard() {
+  return (
+    <MainLayout>
+      <div className="space-y-6">
+        <div>
+          <h1 className="text-3xl font-bold tracking-tight">Welcome Back!</h1>
+          <p className="text-muted-foreground">
+            Here&apos;s your habit tracking dashboard for today.
+          </p>
+        </div>
+        
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+          <div className="rounded-lg border bg-card p-6">
+            <h3 className="text-lg font-semibold">Today&apos;s Score</h3>
+            <p className="text-2xl font-bold text-success">+45</p>
+          </div>
+          <div className="rounded-lg border bg-card p-6">
+            <h3 className="text-lg font-semibold">Streak</h3>
+            <p className="text-2xl font-bold text-primary">7 days</p>
+          </div>
+          <div className="rounded-lg border bg-card p-6">
+            <h3 className="text-lg font-semibold">Completed</h3>
+            <p className="text-2xl font-bold">8/12</p>
+          </div>
+          <div className="rounded-lg border bg-card p-6">
+            <h3 className="text-lg font-semibold">This Week</h3>
+            <p className="text-2xl font-bold text-success">+280</p>
+          </div>
+        </div>
+      </div>
+    </MainLayout>
+  );
+}
+
+export default function HomePage() {
+  const { user, loading } = useAuth();
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center space-y-4">
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto"></div>
+          <p className="text-muted-foreground">Loading...</p>
+        </div>
+      </div>
+    );
+  }
+
+  return user ? <Dashboard /> : <HeroSection />;
 }
