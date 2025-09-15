@@ -14,7 +14,15 @@
     "db:reset": "npx supabase db reset",
     "db:migrate": "npx supabase db push",
     "db:generate": "npx supabase gen types typescript --linked > types/supabase.ts",
-    "db:seed": "npx supabase db reset --with-seed"
+    "db:seed": "npx supabase db reset --with-seed",
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:ui": "playwright test --ui",
+    "test:debug": "playwright test --debug",
+    "test:setup": "playwright test --project=setup",
+    "test:auth": "playwright test tests/auth/",
+    "test:profile": "playwright test tests/integration/profile.spec.ts",
+    "test:report": "playwright show-report"
   },
   "dependencies": {
     "@headlessui/react": "^2.2.8",
@@ -36,10 +44,12 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@ianvs/prettier-plugin-sort-imports": "^4.7.0",
+    "@playwright/test": "^1.55.0",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20.19.14",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "dotenv": "^17.2.2",
     "eslint": "^9",
     "eslint-config-next": "15.5.3",
     "prettier": "^3.6.2",

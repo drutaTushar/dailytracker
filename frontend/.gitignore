@@ -42,3 +42,6 @@ next-env.d.ts
 
 supabase/.temp
 supabase/config.toml
+
+playwright-report
+test-results

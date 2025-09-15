@@ -33,7 +33,7 @@ export function Header({ className }: HeaderProps) {
           {/* Navigation */}
           {user && (
             <nav className="hidden items-center space-x-6 md:flex">
-              <Link href="/dashboard" className="hover:text-primary text-sm font-medium">
+              <Link href="/" className="hover:text-primary text-sm font-medium">
                 Dashboard
               </Link>
               <Link href="/tasks" className="hover:text-primary text-sm font-medium">
@@ -55,8 +55,10 @@ export function Header({ className }: HeaderProps) {
                 <span className="text-sm text-muted-foreground">
                   {profile?.display_name || profile?.full_name || user.email}
                 </span>
-                <Button variant="ghost" size="icon">
-                  <Cog6ToothIcon className="h-5 w-5" />
+                <Button variant="ghost" size="icon" asChild>
+                  <Link href="/profile">
+                    <Cog6ToothIcon className="h-5 w-5" />
+                  </Link>
                 </Button>
                 <Button variant="outline" onClick={handleSignOut}>
                   Sign Out

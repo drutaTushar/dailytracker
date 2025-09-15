@@ -19,7 +19,7 @@ interface SidebarProps {
 }
 
 const navigation = [
-  { name: 'Dashboard', href: '/dashboard', icon: HomeIcon },
+  { name: 'Dashboard', href: '/', icon: HomeIcon },
   { name: "Today's Tasks", href: '/tasks/today', icon: ListBulletIcon },
   { name: 'All Tasks', href: '/tasks', icon: CalendarDaysIcon },
   { name: 'Analytics', href: '/analytics', icon: ChartBarIcon },
