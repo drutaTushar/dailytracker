@@ -45,3 +45,4 @@ supabase/config.toml
 
 playwright-report
 test-results
+scripts/testing/sample_tasks.sql
