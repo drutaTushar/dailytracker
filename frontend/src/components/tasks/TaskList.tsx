@@ -87,7 +87,7 @@ export function TaskList({
 
     // Apply sorting
     filtered.sort((a, b) => {
-      let aValue: any, bValue: any;
+      let aValue: string | number | Date, bValue: string | number | Date;
       
       switch (sortBy) {
         case 'name':
@@ -118,7 +118,7 @@ export function TaskList({
     return filtered;
   }, [tasks, filters, sortBy, sortOrder]);
 
-  const handleFilterChange = (key: keyof FilterState, value: any) => {
+  const handleFilterChange = (key: keyof FilterState, value: string | boolean) => {
     setFilters(prev => ({ ...prev, [key]: value }));
   };
 

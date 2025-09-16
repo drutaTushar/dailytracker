@@ -37,8 +37,8 @@ export function TaskDetailModal({
 }: TaskDetailModalProps) {
   if (!task) return null;
 
-  const difficultyLabel = getDifficultyLabel(task.difficulty_level);
-  const difficultyColor = getDifficultyColor(task.difficulty_level);
+  const difficultyLabel = getDifficultyLabel(task.difficulty_level as 1 | 2 | 3 | 4 | 5);
+  const difficultyColor = getDifficultyColor(task.difficulty_level as 1 | 2 | 3 | 4 | 5);
   const categoryDisplay = formatCategoryDisplay(task.category);
 
   const formatDate = (dateString: string) => {

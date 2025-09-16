@@ -83,33 +83,17 @@ function HeroSection() {
 }
 
 function Dashboard() {
+  // Redirect to dedicated dashboard page
+  if (typeof window !== 'undefined') {
+    window.location.href = '/dashboard';
+  }
+  
   return (
     <MainLayout>
-      <div className="space-y-6">
-        <div>
-          <h1 className="text-3xl font-bold tracking-tight">Welcome Back!</h1>
-          <p className="text-muted-foreground">
-            Here&apos;s your habit tracking dashboard for today.
-          </p>
-        </div>
-        
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-          <div className="rounded-lg border bg-card p-6">
-            <h3 className="text-lg font-semibold">Today&apos;s Score</h3>
-            <p className="text-2xl font-bold text-success">+45</p>
-          </div>
-          <div className="rounded-lg border bg-card p-6">
-            <h3 className="text-lg font-semibold">Streak</h3>
-            <p className="text-2xl font-bold text-primary">7 days</p>
-          </div>
-          <div className="rounded-lg border bg-card p-6">
-            <h3 className="text-lg font-semibold">Completed</h3>
-            <p className="text-2xl font-bold">8/12</p>
-          </div>
-          <div className="rounded-lg border bg-card p-6">
-            <h3 className="text-lg font-semibold">This Week</h3>
-            <p className="text-2xl font-bold text-success">+280</p>
-          </div>
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center space-y-4">
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto"></div>
+          <p className="text-muted-foreground">Redirecting to dashboard...</p>
         </div>
       </div>
     </MainLayout>

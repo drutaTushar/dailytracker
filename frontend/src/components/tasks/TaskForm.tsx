@@ -44,7 +44,7 @@ export function TaskForm({
     reset,
     watch,
     setValue,
-  } = useForm<TaskFormData>({
+  } = useForm({
     resolver: zodResolver(taskFormSchema),
     defaultValues: {
       name: '',

@@ -68,7 +68,8 @@ export function useTasks(options: UseTasksOptions = {}): UseTasksReturn {
 
       if (fetchError) throw fetchError;
 
-      setTasks(data || []);
+      // Type assertion to handle database schema differences
+      setTasks((data as Task[]) || []);
     } catch (err) {
       console.error('Error fetching tasks:', err);
       setError(err instanceof Error ? err.message : 'Failed to fetch tasks');
@@ -100,9 +101,9 @@ export function useTasks(options: UseTasksOptions = {}): UseTasksReturn {
       if (createError) throw createError;
 
       // Optimistically update local state
-      setTasks(prev => [newTask, ...prev]);
+      setTasks(prev => [newTask as Task, ...prev]);
       
-      return newTask;
+      return newTask as Task;
     } catch (err) {
       console.error('Error creating task:', err);
       setError(err instanceof Error ? err.message : 'Failed to create task');
@@ -131,10 +132,10 @@ export function useTasks(options: UseTasksOptions = {}): UseTasksReturn {
 
       // Optimistically update local state
       setTasks(prev => prev.map(task => 
-        task.id === id ? updatedTask : task
+        task.id === id ? updatedTask as Task : task
       ));
 
-      return updatedTask;
+      return updatedTask as Task;
     } catch (err) {
       console.error('Error updating task:', err);
       setError(err instanceof Error ? err.message : 'Failed to update task');
@@ -226,7 +227,7 @@ export function useTask(id: string) {
 
       if (fetchError) throw fetchError;
 
-      setTask(data);
+      setTask(data as Task);
     } catch (err) {
       console.error('Error fetching task:', err);
       setError(err instanceof Error ? err.message : 'Failed to fetch task');

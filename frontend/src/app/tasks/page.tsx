@@ -77,10 +77,10 @@ export default function TasksPage() {
         const createData = {
           name: formData.name,
           description: formData.description || null,
-          positive_points: parseInt(formData.positive_points),
-          negative_points: parseInt(formData.negative_points),
+          positive_points: formData.positive_points,
+          negative_points: formData.negative_points,
           category: formData.category || null,
-          difficulty_level: parseInt(formData.difficulty_level),
+          difficulty_level: formData.difficulty_level,
         };
 
         const validation = validateCreateTask(createData);
@@ -99,10 +99,10 @@ export default function TasksPage() {
           id: selectedTask.id,
           name: formData.name,
           description: formData.description || null,
-          positive_points: parseInt(formData.positive_points),
-          negative_points: parseInt(formData.negative_points),
+          positive_points: formData.positive_points,
+          negative_points: formData.negative_points,
           category: formData.category || null,
-          difficulty_level: parseInt(formData.difficulty_level),
+          difficulty_level: formData.difficulty_level,
         };
 
         const validation = validateUpdateTask(updateData);

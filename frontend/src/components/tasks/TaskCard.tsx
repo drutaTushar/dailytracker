@@ -41,8 +41,8 @@ export function TaskCard({
 }: TaskCardProps) {
   const [isHovered, setIsHovered] = useState(false);
 
-  const difficultyLabel = getDifficultyLabel(task.difficulty_level);
-  const difficultyColor = getDifficultyColor(task.difficulty_level);
+  const difficultyLabel = getDifficultyLabel(task.difficulty_level as 1 | 2 | 3 | 4 | 5);
+  const difficultyColor = getDifficultyColor(task.difficulty_level as 1 | 2 | 3 | 4 | 5);
   const categoryDisplay = formatCategoryDisplay(task.category);
   const createdDate = new Date(task.created_at).toLocaleDateString();
 
